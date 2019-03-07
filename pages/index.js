@@ -7,32 +7,32 @@ const Index = (props) => (
     <ul>
       {props.featureKeys.map((key, index) => (
         <li key={key}>
-            {key} is {props.features[key]}
+          {key} is <b>{props.features[key].toString()}</b>
         </li>
       ))}
     </ul>
   </Layout>
 )
 
-Index.getInitialProps = async function({req}) {
-    let features= {};
-    let featureKeys = [];
-    if( req ){
-        features = req.features;
-        for (let p in features) {
-            if(  features.hasOwnProperty(p) ) {
-                featureKeys.push(p);
-            }
-        }
-    }else{
-        const res = await fetch('/api/features')
-        features = await res.json()
-        for (let p in features) {
-            if(  features.hasOwnProperty(p) ) {
-                featureKeys.push(p);
-            }
-        }
+Index.getInitialProps = async function ({ req }) {
+  let features = {};
+  let featureKeys = [];
+  if (req) {
+    features = req.features;
+    for (let p in features) {
+      if (features.hasOwnProperty(p)) {
+        featureKeys.push(p);
+      }
     }
+  } else {
+    const res = await fetch('/api/features')
+    features = await res.json()
+    for (let p in features) {
+      if (features.hasOwnProperty(p)) {
+        featureKeys.push(p);
+      }
+    }
+  }
 
   return {
     features: features,
