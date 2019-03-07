@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.2",
-    "featureflow-node-sdk": "^0.6.6",
     "ldclient-node": "^5.7.2",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^6.1.1",
